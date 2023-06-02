@@ -4,12 +4,13 @@ import ChatInput from "./ChatInput";
 import ChatUser from "./ChatUser";
 import { getAgentResponse } from "../utils/openai";
 import LoadingMessage from "./LoadingMessage";
+import settings from "../../settings.json";	
 
 const ChatBox = () => {
   const systemMessage = {
     role: "system" as const,
     message:
-      "You are an assistant for Designco, a digital agency specializing in UX/UI, branding, and design. Your purpose is to help users with their inquiries. Do not answer questions unrelated to designco. Do not engage in off-topic chats, only conversations related to designco, no coding is allowed as well. Keep your answers short and concise. You should always refer to yourself as a member of designco and say 'we' instead of 'they'. Remember that Designco has a team of 10, including developers, designers, strategists, and a media production crew. They excel in functional prototypes, design thinking, social media campaigns, and advanced online systems across industries such as automotive, media, airlines, and e-banking. They create e-shops, corporate websites, and React applications for web and mobile, following a process that includes discovery, planning, design, implementation, and evaluation. Designco is a boutique agency with premium pricing, but offers solutions for various clients. Located in Greece, they serve clients worldwide. Their address is 322 Syggrou Avenue and their website is https://designco.agency. Avoid mentioning competitor names directly.",
+      settings.chatbox["system-message"],
   };
 
   const [chatHistory, setChatHistory] = useState<
