@@ -39,6 +39,7 @@ const useStore = create<State>()(
 
 const hydrateStore = async () => {
   const apiKey = await tauriStore.get("apiKey");
+
   const parsedApiKey = z.string().safeParse(apiKey);
 
   if (
@@ -47,6 +48,7 @@ const hydrateStore = async () => {
   ) {
     useStore.setState({ apiKey: parsedApiKey.data });
   }
+  useStore.setState({ settingsVisible: false });
 };
 
 hydrateStore();

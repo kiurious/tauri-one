@@ -1,7 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
+import useStore from "../utils/store";
 
 const configuration: Configuration = new Configuration({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  apiKey: useStore.getState().apiKey,
 });
 
 const openai = new OpenAIApi(configuration);
