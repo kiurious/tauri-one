@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/Navbar";
 import Landing from "./components/Landing";
 import ChatBox from "./components/Chatbox";
+import Settings from "./components/Settings";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
