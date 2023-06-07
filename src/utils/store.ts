@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
 import { Store } from "tauri-plugin-store-api";
 import { z } from "zod";
 
@@ -15,28 +14,21 @@ interface State {
 }
 
 const useStore = create<State>()(
-  devtools(
-    persist(
-      (set) => ({
-        apiKey: "ABCDEF-123456",
-        changeApiKey: async (newKey) => {
-          set({ apiKey: newKey });
-          await tauriStore.set("apiKey", newKey);
-          tauriStore.save();
-        },
-        settingsVisible: false,
-        changeSettingsVisible: (newVisible) =>
-          set({ settingsVisible: newVisible }),
-        bears: 0,
-        increase: (by) => set((state) => ({ bears: state.bears + by })),
-      }),
-      {
-        name: "settings-storage",
-      }
-    )
-  )
+  (set) => ({
+    apiKey: "ABCDEF-123456",
+    changeApiKey: async (newKey) => {
+      set({ apiKey: newKey });
+      await tauriStore.set("apiKey", newKey);
+      tauriStore.save();
+    },
+    settingsVisible: false,
+    changeSettingsVisible: (newVisible) => set({ settingsVisible: newVisible }),
+    bears: 0,
+    increase: (by) => set((state) => ({ bears: state.bears + by })),
+  })
 );
 
+// loads settings from disk
 const hydrateStore = async () => {
   const apiKey = await tauriStore.get("apiKey");
 

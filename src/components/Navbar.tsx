@@ -10,7 +10,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar fixed top-0 z-10 min-w-screen">
-      <div className="flex-none">
+      {/* <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +26,9 @@ const NavBar = () => {
             ></path>
           </svg>
         </button>
-      </div>
+      </div> */}
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">ChatBot</a>
+        <a className="btn btn-ghost normal-case text-xl" onClick={()=> changeSettingsVisibility(false)}>ChatBot</a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">

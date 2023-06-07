@@ -10,7 +10,7 @@ const Settings = () => {
     settings["api-key"] = e.target.value;
   };
   return (
-    <div className="p-2 shadow-lg bg-slate-900/90">
+    <div className="p-4 shadow-lg bg-slate-900/90">
       <h1 className="text-center text-3xl font-bold font-mono">Settings</h1>
 
       <div className="p-2 flex flex-col gap-4">
