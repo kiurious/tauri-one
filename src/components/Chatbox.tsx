@@ -4,13 +4,16 @@ import ChatInput from "./ChatInput";
 import ChatUser from "./ChatUser";
 import { getAgentResponse } from "../utils/openai";
 import LoadingMessage from "./LoadingMessage";
-import settings from "../../settings.json";	
+import settings from "../../settings-default.json";	
+import useStore from "../utils/store";
 
 const ChatBox = () => {
+  const storedSystemMessage = useStore((state) => state.systemMessage);
+
   const systemMessage = {
     role: "system" as const,
     message:
-      settings.chatbox["system-message"],
+      storedSystemMessage ||  settings.chatbox["system-message"],
   };
 
   const [chatHistory, setChatHistory] = useState<
