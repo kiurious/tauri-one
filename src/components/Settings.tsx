@@ -12,6 +12,7 @@ const Settings = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeKey(e.target.value);
     settings["api-key"] = e.target.value;
+    console.log(settings)
   };
 
   return (
