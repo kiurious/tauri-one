@@ -5,7 +5,7 @@ import { z } from "zod";
 const tauriStore = new Store(".settings.dat");
 
 interface State {
-  settingsLoaded: boolean;
+  settingsLoaded: boolean; // check for usefullness still to be implemented properly
   apiKey: string;
   changeApiKey: (newKey: string) => void;
   settingsVisible: boolean;
@@ -70,7 +70,7 @@ const hydrateStore = async () => {
     useStore.setState({ userName: parsedUserName.data });
   }
 
-  useStore.setState({ settingsLoaded: true });
+  useStore.setState({ settingsLoaded: true }); // check for usefullness
 };
 
 hydrateStore();
