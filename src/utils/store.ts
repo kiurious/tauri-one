@@ -4,6 +4,8 @@ import { z } from "zod";
 
 const tauriStore = new Store(".settings.dat");
 
+hydrateStore();
+
 interface State {
   settingsLoaded: boolean; // check for usefullness still to be implemented properly
   apiKey: string;
@@ -41,7 +43,7 @@ const useStore = create<State>()((set) => ({
 }));
 
 // loads settings from disk
-const hydrateStore = async () => {
+async function hydrateStore() {
   const apiKey = await tauriStore.get("apiKey");
   const systemMessage = await tauriStore.get("systemMessage");
   const userName = await tauriStore.get("userName");
@@ -73,6 +75,5 @@ const hydrateStore = async () => {
   useStore.setState({ settingsLoaded: true }); // check for usefullness
 };
 
-hydrateStore();
 
 export default useStore;
