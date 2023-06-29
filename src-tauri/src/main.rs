@@ -58,19 +58,10 @@ fn main() {
         })
         .on_menu_event(|event| match event.menu_item_id() {
             "settings" => {
-              
+                event.window().emit("open_settings", ()).unwrap();
             }
             _ => {}
         })
-        // .on_window_event(|event| match event.event() {
-        //     tauri::WindowEvent::Focused(is_focused) => {
-        //         // detect click outside of the focused window and hide the app
-        //         if !is_focused {
-        //             event.window().hide().unwrap();
-        //         }
-        //     }
-        //     _ => {}
-        // })
         .invoke_handler(tauri::generate_handler![greet])
         .plugin(tauri_plugin_store::Builder::default().build())
         .run(tauri::generate_context!())
