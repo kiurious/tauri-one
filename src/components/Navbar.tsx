@@ -1,4 +1,5 @@
 import useStore from "../utils/store";
+import { emit, listen } from '@tauri-apps/api/event'
 
 const NavBar = () => {
   const settingsVisible = useStore((state) => state.settingsVisible);
@@ -6,6 +7,10 @@ const NavBar = () => {
 
   const toggleSettings = () => {
     changeSettingsVisibility(!settingsVisible)
+    const unlisten = await listen('click', (event)=> {
+      // Do something
+      changeSettingsVisibility(!settingsVisible)
+    })
   }
 
   return (
