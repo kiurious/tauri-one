@@ -8,11 +8,12 @@ const Settings = () => {
   const changeSystemMessage = useStore((state) => state.changeSystemMessage);
   const userName = useStore((state) => state.userName);
   const changeUserName = useStore((state) => state.changeUserName);
+  const maxTokens = useStore((state) => state.maxTokens);
+  const changeMaxTokens = useStore((state) => state.changeMaxTokens);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAPIKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeKey(e.target.value);
     settings["api-key"] = e.target.value;
-    console.log(settings)
   };
 
   return (
@@ -21,25 +22,25 @@ const Settings = () => {
 
       <div className="p-2 flex flex-col gap-4">
         <div>
-          <h2 className="text-lg font-mono">Volume:</h2>
+          <h2 className="text-lg font-mono">Max Tokens: {maxTokens}</h2>
           <input
             type="range"
             min="0"
-            max="100"
-            // value={volume}
+            max="500"
+            value={maxTokens}
             className="range range-xs"
-            // onChange={(e) => {
-            //   setVolume(e.target.valueAsNumber);
-            // }}
+            onChange={(e) => {
+              changeMaxTokens(e.target.valueAsNumber);
+            }}
           />
         </div>
         <div>
           <h2 className="text-lg font-mono">API Key:</h2>
           <input
-            type="text"
+            type="password"
             className="input input-bordered w-full font-mono"
             value={apiKey}
-            onChange={handleChange}
+            onChange={handleAPIKeyChange}
           />
         </div>
         <div>
