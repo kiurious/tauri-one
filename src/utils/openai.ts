@@ -26,12 +26,14 @@ export const getAgentResponse = async (
     } else {
       return "I'm sorry, I cannot generate a response at this time.";
     }
-  } catch (error: unknown) {
-    console.error("Error fetching agent response:", error);
+  } catch (error: any) {
+    console.error(
+      "Error fetching agent response:",
+      error.response && error.response.data
+        ? error.response.data.error.message
+        : error.message
+    );
 
-    if (error instanceof Error) {
-      return error.message;
-    }
-    return "I'm sorry, I cannot generate a response at this time.";
+    return error.response.data.error.message;
   }
 };

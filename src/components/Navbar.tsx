@@ -1,17 +1,18 @@
 import useStore from "../utils/store";
-import { listen } from '@tauri-apps/api/event'
+import { listen } from "@tauri-apps/api/event";
 
 const NavBar = () => {
   const settingsVisible = useStore((state) => state.settingsVisible);
-  const changeSettingsVisibility = useStore((state) => state.changeSettingsVisible)
+  const changeSettingsVisibility = useStore(
+    (state) => state.changeSettingsVisible
+  );
 
   const toggleSettings = async () => {
-    changeSettingsVisibility(!settingsVisible)
-  }
+    changeSettingsVisibility(!settingsVisible);
+  };
 
-  listen('open_settings', (event) => {
-    console.log('Received event:', event);
-    toggleSettings()
+  listen("open_settings", () => {
+    toggleSettings();
   });
 
   return (
@@ -34,7 +35,12 @@ const NavBar = () => {
         </button>
       </div> */}
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl" onClick={()=> changeSettingsVisibility(false)}>ChatBot</a>
+        <a
+          className="btn btn-ghost normal-case text-xl"
+          onClick={() => changeSettingsVisibility(false)}
+        >
+          ChatBot
+        </a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
@@ -58,9 +64,7 @@ const NavBar = () => {
             className="mt-3 p-2 menu menu-sm dropdown-content rounded-box w-52 bg-slate-900/90 shadow-lg shadow-slate-900"
           >
             <li>
-              <a className="justify-between">
-                Profile
-              </a>
+              <a className="justify-between">Profile</a>
             </li>
             <li>
               <a onClick={toggleSettings}>Settings</a>

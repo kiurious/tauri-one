@@ -21,14 +21,12 @@ fn greet(name: &str) -> String {
 use tauri::{CustomMenuItem, Manager, Menu, Submenu, SystemTrayEvent, SystemTrayMenu};
 
 fn main() {
-    let add_api_key = CustomMenuItem::new("add_api_key".to_string(), "Add API Key");
     let settings = CustomMenuItem::new("settings".to_string(), "Settings");
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let hide = CustomMenuItem::new("hide".to_string(), "Hide");
     let submenu = Submenu::new(
         "Options",
         Menu::new()
-            .add_item(add_api_key)
             .add_item(settings)
             .add_item(quit),
     );
