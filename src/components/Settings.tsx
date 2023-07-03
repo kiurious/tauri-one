@@ -1,5 +1,6 @@
 import settings from "../../settings-default.json";
 import useStore from "../utils/store";
+import { listen } from "@tauri-apps/api/event";
 
 const Settings = () => {
   const apiKey = useStore((state) => state.apiKey);
@@ -16,9 +17,43 @@ const Settings = () => {
     settings["api-key"] = e.target.value;
   };
 
+  const settingsVisible = useStore((state) => state.settingsVisible);
+  const changeSettingsVisibility = useStore(
+    (state) => state.changeSettingsVisible
+  );
+
+  const toggleSettings = async () => {
+    changeSettingsVisibility(!settingsVisible);
+  };
+
+  listen("open_settings", () => {
+    toggleSettings();
+  });
+
   return (
     <div className="p-4 shadow-lg bg-slate-900/90">
       <h1 className="text-center text-3xl font-bold font-mono">Settings</h1>
+      <div className="flex justify-end">
+        <button
+          onClick={() => toggleSettings()}
+          className="flex-none btn btn-circle"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
 
       <div className="p-2 flex flex-col gap-4">
         <div>
