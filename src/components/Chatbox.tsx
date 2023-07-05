@@ -11,8 +11,7 @@ const ChatBox = () => {
 
   const systemMessage = {
     role: "system" as const,
-    message:
-      storedSystemMessage,
+    message: storedSystemMessage,
   };
 
   const [chatHistory, setChatHistory] = useState<
@@ -84,24 +83,26 @@ const ChatBox = () => {
     </div>
   ) : (
     <div className="scrollbar-hide z-20 font-mono bg-slate-900/90 shadow-lg shadow-slate-900 p-6 rounded-md min-w-full sm:min-w-0 sm:max-w-sm min-h-fit sm:min-h-0 max-h-full fixed bottom-4 sm:right-4">
-      <div
-        className="flex sticky justify-end top-1 z-10 p-1 cursor-pointer"
-        onClick={handleChatStatusChange}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          className="
-          w-4 h-4 stroke-current"
+      <div className="flex sticky justify-end top-1 z-10 p-1 cursor-pointer">
+        <button
+          onClick={handleChatStatusChange}
+          className="flex-none btn btn-circle"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
       <div className="prompt pb-8 max-h-[calc(100vh-9rem)] overflow-y-auto">
         <ChatAgent key={"assistant"} message={"Hi, how can I help you?"} />
