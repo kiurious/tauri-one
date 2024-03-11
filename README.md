@@ -1,4 +1,4 @@
-# Experimenting with Tauri - A digital assistant app for the desktop which uses OpenAI's GPT API and custom prompts for business use cases.
+# Experimenting with Tauri - An AI digital assistant app for desktop/mobile which uses OpenAI's API and custom prompts for business use cases.
 
 ## Screenshots
 
@@ -7,15 +7,31 @@
 
 ## Getting Started
 
-Clone the repository.
+1. Clone the repository from Github using the following command:
 
 ```bash
-# Install dependencies
-npm install
+git clone https://github.com/kiurious/tauri-one
+```
 
-# Start the app in development mode
+2. Change directory to the project folder:
+
+```bash
+cd tauri-one
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. Start the app in development mode:
+
+```bash
 npm run tauri dev
 ```
+
+Data is stored locally
 
 ## Tauri + React + Typescript Recommended IDE Setup
 
