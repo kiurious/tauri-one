@@ -92,7 +92,7 @@ const Settings = () => {
         <div>
           <h2 className="text-lg font-mono">System Message:</h2>
           <textarea
-            className="textarea textarea-bordered w-full md:h-64 font-mono"
+            className="textarea textarea-bordered w-full h-64 font-mono"
             placeholder="Bio"
             value={systemMessage || settings.chatbox["system-message"]}
             onChange={(e) => {
