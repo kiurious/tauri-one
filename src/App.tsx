@@ -5,7 +5,7 @@ import ChatBox from "./components/Chatbox";
 
 function App() {
   return (
-    <div className="bg-slate-800 flex flex-col content-center justify-center w-full h-full">
+    <div className="bg-slate-800 flex flex-col content-center justify-center items-center w-full h-screen">
       <NavBar />
       <Landing />
       <ChatBox />

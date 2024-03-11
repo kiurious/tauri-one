@@ -6,11 +6,11 @@ import designcoLottie from "../../src/designco-master.json";
 const Landing = () => {
   const settingsVisible = useStore((state) => state.settingsVisible);
   return (
-    <div className="hero min-h-screen min-w-full bg-cover bg-center bg-black">
-      <div className="hero-overlay bg-opacity-60 flex flex-column items-center justify-center">
+    <div className="hero max-h-screen min-w-full bg-cover bg-center">
+      <div className="flex flex-column justify-center w-full h-screen">
         {settingsVisible && <Settings />}
         {!settingsVisible && (
-          <Lottie animationData={designcoLottie} style={{ width: "75vw" }} />
+          <Lottie animationData={designcoLottie} style={{ height: "100%" }} />
         )}
       </div>
     </div>

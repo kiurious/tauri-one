@@ -16,8 +16,6 @@ interface State {
   changeSystemMessage: (newMessage: string) => void;
   userName: string;
   changeUserName: (newName: string) => void;
-  bears: number;
-  increase: (by: number) => void;
   maxTokens: number;
   changeMaxTokens: (newMax: number) => void;
 }
@@ -41,8 +39,6 @@ const useStore = create<State>()((set) => ({
   },
   userName: "Kiurious",
   changeUserName: (newName) => set({ userName: newName }),
-  bears: 0,
-  increase: (by) => set((state) => ({ bears: state.bears + by })),
   maxTokens: 200,
   changeMaxTokens: async (newMax) => {
     set({ maxTokens: newMax });

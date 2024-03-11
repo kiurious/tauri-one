@@ -31,7 +31,7 @@ const Settings = () => {
   });
 
   return (
-    <div className="p-4 shadow-lg bg-slate-900/90 w-full">
+    <div className="p-4 shadow-lg bg-slate-900/90 w-full z-50 md:z-0">
       <h1 className="text-center text-3xl font-bold font-mono">Settings</h1>
       <div className="flex justify-end">
         <button
