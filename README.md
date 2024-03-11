@@ -31,7 +31,10 @@ npm install
 npm run tauri dev
 ```
 
-Data is stored locally
+## Features
+- Data is stored locally
+- User can tweak the settings, including adding their own api key, define default prompt and amount of tokens
+- Responsive design for mobile and desktop out of the box
 
 ## Tauri + React + Typescript Recommended IDE Setup
 
