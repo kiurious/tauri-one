@@ -1,5 +1,10 @@
 # Experimenting with Tauri - A digital assistant app for the desktop which uses OpenAI's GPT API and custom prompts for business use cases.
 
+## Screenshots
+
+![](/public/demogif.gif)
+![](/public/screenshot.png)
+
 ## Getting Started
 
 Clone the repository.
