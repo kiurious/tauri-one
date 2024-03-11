@@ -2,6 +2,7 @@ import Settings from "./Settings";
 import useStore from "../utils/store";
 import Lottie from "lottie-react";
 import designcoLottie from "../../src/designco-master.json";
+import FluidComponent from "./FluidComponent";
 
 const Landing = () => {
   const settingsVisible = useStore((state) => state.settingsVisible);
@@ -10,7 +11,10 @@ const Landing = () => {
       <div className="flex flex-column justify-center w-full h-screen">
         {settingsVisible && <Settings />}
         {!settingsVisible && (
-          <Lottie animationData={designcoLottie} style={{ height: "100%" }} />
+          <div>
+            <Lottie animationData={designcoLottie} style={{ height: "100%" }} />
+            <FluidComponent />
+          </div>
         )}
       </div>
     </div>
