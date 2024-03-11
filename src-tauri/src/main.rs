@@ -9,15 +9,6 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
-
-// #[tauri::command]
-// fn get_api_key() -> String {
-//     let mut settings = config::Config::default();
-//     settings.merge(config::File::with_name("settings")).unwrap();
-//     let api_key = settings.get_str("api_key").unwrap();
-//     api_key
-// }
-
 use tauri::{CustomMenuItem, Manager, Menu, Submenu, SystemTrayEvent, SystemTrayMenu};
 
 fn main() {
