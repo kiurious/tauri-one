@@ -72,7 +72,7 @@ const Settings = () => {
           <input
             type="range"
             min="0"
-            max="500"
+            max="1"
             value={maxTokens}
             className="range range-xs"
             onChange={(e) => {
