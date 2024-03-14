@@ -76,7 +76,7 @@ const Settings = () => {
             value={temperature}
             className="range range-xs"
             onChange={(e) => {
-              changeMaxTokens(e.target.valueAsNumber);
+              changeTemperature(e.target.valueAsNumber);
             }}
           />
         </div>
