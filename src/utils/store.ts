@@ -47,7 +47,7 @@ const useStore = create<State>()((set) => ({
     await tauriStore.set("maxTokens", newMax);
     tauriStore.save();
   },
-  temperature: 0,
+  temperature: 0.56,
   changeTemperature: async (newTemp) => {
     set({ temperature: newTemp });
     await tauriStore.set("temperature", newTemp);
