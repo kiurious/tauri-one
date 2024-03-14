@@ -17,7 +17,8 @@ export const getAgentResponse = async (
         role: chatMessage.role,
         content: chatMessage.message,
       })),
-      max_tokens: 200,
+      max_tokens: useStore.getState().maxTokens,
+      temperature: useStore.getState().temperature,
     });
 
     if (response.data.choices[0]?.message) {
