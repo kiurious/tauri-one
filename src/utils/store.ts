@@ -18,6 +18,8 @@ interface State {
   changeUserName: (newName: string) => void;
   maxTokens: number;
   changeMaxTokens: (newMax: number) => void;
+  temperature: number;
+  changeTemperature: (newTemp: number) => void;
 }
 
 const useStore = create<State>()((set) => ({
@@ -45,6 +47,12 @@ const useStore = create<State>()((set) => ({
     await tauriStore.set("maxTokens", newMax);
     tauriStore.save();
   },
+  temperature: 0,
+  changeTemperature: async (newTemp) => {
+    set({ temperature: newTemp });
+    await tauriStore.set("temperature", newTemp);
+    tauriStore.save();
+  },
 }));
 
 // loads settings from disk
@@ -53,11 +61,13 @@ async function hydrateStore() {
   const systemMessage = await tauriStore.get("systemMessage");
   const userName = await tauriStore.get("userName");
   const maxTokens = await tauriStore.get("maxTokens");
+  const temperature = await tauriStore.get("temperature");
 
   const parsedApiKey = z.string().safeParse(apiKey);
   const parsedSystemMessage = z.string().safeParse(systemMessage);
   const parsedUserName = z.string().safeParse(userName);
   const parsedMaxTokens = z.number().safeParse(maxTokens);
+  const parsedTemperature = z.number().safeParse(temperature);
 
   if (
     parsedApiKey.success &&
@@ -83,6 +93,12 @@ async function hydrateStore() {
     parsedMaxTokens.data !== useStore.getState().maxTokens
   ) {
     useStore.setState({ maxTokens: parsedMaxTokens.data });
+  }
+  if (
+    parsedTemperature.success &&
+    parsedTemperature.data !== useStore.getState().temperature
+  ) {
+    useStore.setState({ temperature: parsedTemperature.data });
   }
 
   useStore.setState({ settingsLoaded: true }); // check for usefullness

@@ -11,6 +11,8 @@ const Settings = () => {
   const changeUserName = useStore((state) => state.changeUserName);
   const maxTokens = useStore((state) => state.maxTokens);
   const changeMaxTokens = useStore((state) => state.changeMaxTokens);
+  const temperature = useStore((state) => state.temperature);
+  const changeTemperature = useStore((state) => state.changeTemperature);
 
   const handleAPIKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeKey(e.target.value);
@@ -57,7 +59,16 @@ const Settings = () => {
 
       <div className="p-2 flex flex-col gap-4">
         <div>
-          <h2 className="text-lg font-mono">Max Tokens: {maxTokens}</h2>
+          <h2 className="text-lg font-mono">API Key:</h2>
+          <input
+            type="password"
+            className="input input-bordered w-full font-mono"
+            value={apiKey}
+            onChange={handleAPIKeyChange}
+          />
+        </div>
+        <div>
+          <h2 className="text-lg font-mono">Temperature: {maxTokens}</h2>
           <input
             type="range"
             min="0"
@@ -70,12 +81,16 @@ const Settings = () => {
           />
         </div>
         <div>
-          <h2 className="text-lg font-mono">API Key:</h2>
+          <h2 className="text-lg font-mono">Max Tokens: {maxTokens}</h2>
           <input
-            type="password"
-            className="input input-bordered w-full font-mono"
-            value={apiKey}
-            onChange={handleAPIKeyChange}
+            type="range"
+            min="0"
+            max="500"
+            value={maxTokens}
+            className="range range-xs"
+            onChange={(e) => {
+              changeMaxTokens(e.target.valueAsNumber);
+            }}
           />
         </div>
         <div>
