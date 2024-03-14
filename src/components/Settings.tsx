@@ -72,7 +72,7 @@ const Settings = () => {
           <input
             type="range"
             min="0"
-            max="1"
+            max="2"
             step={0.01}
             value={temperature}
             className="range range-xs"
@@ -86,7 +86,7 @@ const Settings = () => {
           <input
             type="range"
             min="0"
-            max="500"
+            max="1000"
             value={maxTokens}
             className="range range-xs"
             onChange={(e) => {
