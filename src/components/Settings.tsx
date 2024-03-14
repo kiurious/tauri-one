@@ -61,7 +61,7 @@ const Settings = () => {
         <div>
           <h2 className="text-lg font-mono">API Key:</h2>
           <input
-            type="password"
+            type="text"
             className="input input-bordered w-full font-mono"
             value={apiKey}
             onChange={handleAPIKeyChange}
