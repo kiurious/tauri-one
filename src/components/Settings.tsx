@@ -68,12 +68,12 @@ const Settings = () => {
           />
         </div>
         <div>
-          <h2 className="text-lg font-mono">Temperature: {maxTokens}</h2>
+          <h2 className="text-lg font-mono">Temperature: {temperature}</h2>
           <input
             type="range"
             min="0"
             max="1"
-            value={maxTokens}
+            value={temperature}
             className="range range-xs"
             onChange={(e) => {
               changeMaxTokens(e.target.valueAsNumber);
